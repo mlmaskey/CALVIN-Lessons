@@ -6,7 +6,7 @@ eop = None
 for i in range(1922,2004):
   print('\nNow running WY %d' % i)
 
-  calvin = CALVIN('calvin/data/dataBaseClimate1/linksWY%d.csv' % i, ic=eop)
+  calvin = CALVIN('calvin/data/baseData/linksWY%d.csv' % i, ic=eop)
 
   calvin.eop_constraint_multiplier(0.1)
 
@@ -17,5 +17,4 @@ for i in range(1922,2004):
   calvin.solve_pyomo_model(solver='glpk', nproc=1, debug_mode=False)
 
   # this will append to results files
-  eop = postprocess(calvin.df, calvin.model, resultdir=('result/RunBaseClimate1/WY%d' % i)) 
-#  eop = postprocess(calvin.df, calvin.model, resultdir=('result/RunRecharge4/WY%d' % i), annual=True) 
+  eop = postprocess(calvin.df, calvin.model, resultdir=('result/runBase/WY%d' % i)) 
