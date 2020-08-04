@@ -6,17 +6,17 @@ Created on Mon Feb 10 10:22:25 2020
 """
 import pandas as pd
 def read_combine(yearList, param): 
-    resultdir=('result/RunBaseClimate1/WY%d' % yearList[0])
+    resultdir=('result/runBase/WY%d' % yearList[0])
     F = pd.read_csv(resultdir + '/' + param + '.csv', index_col=0, parse_dates=True)
     
     
     for i in range(yearList[1],yearList[-1]):    
       print('\nNow running WY %d' % i)
-      resultdir=('result/RunBaseClimate1/WY%d' % i)
+      resultdir=('result/runBase/WY%d' % i)
       F2 = pd.read_csv(resultdir + '/' + param + '.csv', index_col=0, parse_dates=True)
       F = pd.concat([F, F2], axis=0)
       
-    F.to_csv('result/RunBaseClimate1/' + param + '.csv', index=True)
+    F.to_csv('result/runBase/' + param + '.csv', index=True)
     
 yearList = [i for i in range(1922, 2005)]
 read_combine(yearList, 'dual_lower')
